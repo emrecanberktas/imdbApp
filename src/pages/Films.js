@@ -24,16 +24,20 @@ function Films() {
     getPopularFilms();
   }, [page]);
   return (
-    <Grid.Container>
+    <div>
       {films.map((film) => {
         return (
-          <Card key={film.id}>
-            <h3>{film.title}</h3>
-            <img src={imageBaseUrl + film.poster_path}></img>
-          </Card>
+          <Grid.Container gap={2} justify="center" wrap="wrap" direction="row">
+            <Grid xs={4}>
+              <Card key={film.id}>
+                <Text h3>{film.title}</Text>
+                <img src={imageBaseUrl + film.poster_path} width="250px"></img>
+              </Card>
+            </Grid>
+          </Grid.Container>
         );
       })}
-    </Grid.Container>
+    </div>
   );
 }
 
