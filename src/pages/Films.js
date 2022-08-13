@@ -25,18 +25,25 @@ function Films() {
   }, [page]);
   return (
     <div>
-      {films.map((film) => {
-        return (
-          <Grid.Container gap={2} justify="center" wrap="wrap" direction="row">
-            <Grid xs={4}>
-              <Card key={film.id}>
+      <Grid.Container gap={2} justify="center" wrap="wrap" direction="row">
+        {films.map((film) => {
+          return (
+            <Grid xs={3}>
+              <Card key={film.id} css={{ mw: "250px" }}>
                 <Text h3>{film.title}</Text>
-                <img src={imageBaseUrl + film.poster_path} width="250px"></img>
+                <Card.Image
+                  src={imageBaseUrl + film.poster_path}
+                  width="250px"
+                  height="100%"
+                  objectFit="cover"
+                  style={{ borderRadius: "5%" }}
+                  alt="Film Poster"
+                />
               </Card>
             </Grid>
-          </Grid.Container>
-        );
-      })}
+          );
+        })}
+      </Grid.Container>
     </div>
   );
 }
