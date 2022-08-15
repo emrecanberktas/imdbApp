@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Card, Text } from "@nextui-org/react";
+import { Grid, Card, Text, Button } from "@nextui-org/react";
 
 function Films() {
   const [page, setPage] = React.useState(1);
@@ -44,6 +44,8 @@ function Films() {
           );
         })}
       </Grid.Container>
+      <Button></Button>
+      <Button></Button>
     </div>
   );
 }
