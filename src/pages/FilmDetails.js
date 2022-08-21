@@ -5,10 +5,19 @@ function FilmDetails() {
   const getFilmDetails = () => {
     axios
       .get(
-        "https://api.themoviedb.org/3/movie/?api_key=2b4d9cd70e38584279f12e85a03dc37a"
+        "https://api.themoviedb.org/3/movie/550?api_key=2b4d9cd70e38584279f12e85a03dc37a&language=en-US"
       )
-      .then(console.log(getFilmDetails.data));
+      .then((res) => {
+        const filmDetails = res.data;
+        console.log(filmDetails);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+  useEffect(() => {
+    getFilmDetails();
+  }, []);
   return <div>FilmDetails</div>;
 }
 

@@ -5,6 +5,8 @@ import { Grid, Card, Text, Button } from "@nextui-org/react";
 function Films() {
   const [page, setPage] = React.useState(1);
   const [films, setFilms] = React.useState([]);
+  const [film, SetFilm] = React.useState([]);
+  const [filmId, setFilmId] = React.useState("");
   const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
   const getPopularFilms = () => {
@@ -15,6 +17,10 @@ function Films() {
       .then((res) => {
         console.log(res.data.results);
         setFilms(res.data.results);
+        res.data.results.forEach((element) => {
+          setFilmId(element.id);
+          console.log(filmId);
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -44,8 +50,8 @@ function Films() {
           );
         })}
       </Grid.Container>
-      <Button></Button>
-      <Button></Button>
+      <Button>{page + 1}</Button>
+      <Button>{page - 1}</Button>
     </div>
   );
 }
