@@ -3,24 +3,19 @@ import axios from "axios";
 import { Grid, Card, Text, Button } from "@nextui-org/react";
 
 function Films() {
-  const [page, setPage] = React.useState(1);
-  const [films, setFilms] = React.useState([]);
-  const [film, SetFilm] = React.useState([]);
-  const [filmId, setFilmId] = React.useState("");
+  const [page, setPage] = useState(1);
+  const [films, setFilms] = useState([]);
   const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
   const getPopularFilms = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=2b4d9cd70e38584279f12e85a03dc37a&language=en-US&page=${page}`
+        `
+		https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
       )
       .then((res) => {
         console.log(res.data.results);
         setFilms(res.data.results);
-        res.data.results.forEach((element) => {
-          setFilmId(element.id);
-          console.log(filmId);
-        });
       })
       .catch((err) => {
         console.log(err);
