@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Grid, Card, Text, Button } from "@nextui-org/react";
+import { Link, Outlet } from "react-router-dom";
 
 function Films() {
   const [page, setPage] = useState(1);
@@ -26,27 +27,38 @@ function Films() {
   }, [page]);
   return (
     <div>
-      <Grid.Container gap={2} justify="center" wrap="wrap" direction="row">
+      <Grid.Container gap={3} justify="center" wrap="wrap" direction="row">
         {films.map((film) => {
           return (
             <Grid xs={3}>
-              <Card key={film.id} css={{ mw: "250px" }}>
-                <Text h3>{film.title}</Text>
+              <Card key={film.id} css={{ width: "100%" }}>
                 <Card.Image
                   src={imageBaseUrl + film.poster_path}
-                  width="250px"
-                  height="100%"
+                  width="100%"
+                  height="450px"
                   objectFit="cover"
-                  style={{ borderRadius: "5%" }}
+                  style={{ display: "block" }}
                   alt="Film Poster"
                 />
+                <Text h4 css={{ padding: "$5 $8", lineHeight: "$sm" }}>
+                  {film.title}
+                </Text>
               </Card>
             </Grid>
           );
         })}
       </Grid.Container>
-      <Button>{page + 1}</Button>
-      <Button>{page - 1}</Button>
+      <>
+        {page === 1 ? (
+          <Button onClick={() => setPage(page + 1)}>Next</Button>
+        ) : (
+          <>
+            <Button onClick={() => setPage(page - 1)}>Previous</Button>
+            <Button onClick={() => setPage(page + 1)}>Next</Button>
+          </>
+        )}
+      </>
+      <Outlet />
     </div>
   );
 }

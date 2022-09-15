@@ -5,6 +5,8 @@ import Films from "./pages/Films";
 import Series from "./pages/Series";
 import FilmCard from "./components/FilmCard";
 import Home from "./pages/Home";
+import FilmDetails from "./pages/FilmDetails";
+import SeriesDetails from "./pages/SeriesDetails";
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="films" element={<Films />} />
-          <Route path="series" element={<Series />} />
+          <Route path="films/:filmId" element={<FilmDetails />} />
+          <Route path="series" element={<Series />}>
+            <Route path="seriesId" element={<SeriesDetails />} />
+          </Route>
         </Routes>
         <FilmCard />
       </div>
