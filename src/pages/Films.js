@@ -31,19 +31,21 @@ function Films() {
         {films.map((film) => {
           return (
             <Grid xs={3}>
-              <Card key={film.id} css={{ width: "100%" }}>
-                <Card.Image
-                  src={imageBaseUrl + film.poster_path}
-                  width="100%"
-                  height="450px"
-                  objectFit="cover"
-                  style={{ display: "block" }}
-                  alt="Film Poster"
-                />
-                <Text h4 css={{ padding: "$5 $8", lineHeight: "$sm" }}>
-                  {film.title}
-                </Text>
-              </Card>
+              <Link to={`/films/${film.id}`}>
+                <Card key={film.id} isHoverable css={{ width: "100%" }}>
+                  <Card.Image
+                    src={imageBaseUrl + film.poster_path}
+                    width="100%"
+                    height="450px"
+                    objectFit="cover"
+                    style={{ display: "block" }}
+                    alt="Film Poster"
+                  />
+                  <Text h4 css={{ padding: "$5 $8", lineHeight: "$sm" }}>
+                    {film.title}
+                  </Text>
+                </Card>
+              </Link>
             </Grid>
           );
         })}
