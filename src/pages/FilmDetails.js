@@ -65,7 +65,7 @@ function FilmDetails(id) {
         <iframe
           width="640"
           height="384"
-          src={`https://www.youtube.com/embed?v=${filmYoutubeTrailerKey}`}
+          src={`https://www.youtube.com/embed/${filmYoutubeTrailerKey}`}
           title="Film Trailer"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         />
