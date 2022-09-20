@@ -41,7 +41,7 @@ function Films() {
                     style={{ display: "block" }}
                     alt="Film Poster"
                   />
-                  <Text h4 css={{ padding: "$5 $9", lineHeight: "$sm" }}>
+                  <Text h4 css={{ padding: "$5 $8", lineHeight: "$sm" }}>
                     {film.title}
                   </Text>
                 </Card>

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Image, Button, Grid, Card } from "@nextui-org/react";
 
 function FilmDetails(id) {
   const [film, setFilm] = React.useState([]);
   const [filmHours, setFilmHours] = React.useState([]);
-  const [filmminutes, setFilmMinutes] = React.useState([]);
+  const [filmMinutes, setFilmMinutes] = React.useState([]);
   const [filmYoutubeTrailerKey, setfilmYoutubeTrailerKey] = React.useState([]);
 
   let { filmId } = useParams();
@@ -31,6 +32,8 @@ function FilmDetails(id) {
       )
       .then((res) => {
         setfilmYoutubeTrailerKey(res.data.results[0].key);
+        setFilmHours(Math.floor(film.runtime / 60));
+        setFilmMinutes(film.runtime % 60);
         console.log(res.data.results[0].key);
       })
       .catch((err) => {
@@ -40,8 +43,6 @@ function FilmDetails(id) {
 
   useEffect(() => {
     getFilmDetails();
-    setFilmHours(Math.floor(film.runtime / 60));
-    setFilmMinutes(film.runtime % 60);
     filmTrailer();
   }, []);
 
@@ -50,30 +51,42 @@ function FilmDetails(id) {
   return (
     <div>
       <h1>{film.title}</h1>
-      <div>
-        {filmHours}h{filmminutes}m
-      </div>
-      <div>{film.runtime}</div>
-      <div>{film.release_date}</div>
-      <div style={{ margin: "0 50" }}>
-        <img
-          width="256"
-          height="384"
-          src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
-          alt="Film Poster"
-        />
-        <iframe
-          width="640"
-          height="384"
-          src={`https://www.youtube.com/embed/${filmYoutubeTrailerKey}`}
-          title="Film Trailer"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        />
-      </div>
+      <ul>
+        <li>{film.release_date}</li>
+        <li>
+          {filmHours}h{filmMinutes}m
+        </li>
+      </ul>
+
+      <Grid.Container>
+        <div>
+          <Image
+            css={{ width: "100%" }}
+            height={384}
+            src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+            alt="Film Poster"
+          />
+        </div>
+        <Grid css={{ marginLeft: "$3" }}>
+          <iframe
+            width="250%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${filmYoutubeTrailerKey}`}
+            title="Film Trailer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
+          <Grid>
+            <Button>Videos</Button>
+          </Grid>
+          <Grid>
+            <Button>Photos</Button>
+          </Grid>
+        </Grid>
+      </Grid.Container>
 
       <div>
         {film.genres?.map((genre) => {
-          return <div key={genre.id}>{genre.name}</div>;
+          return <Button key={genre.id}>{genre.name}</Button>;
         })}
       </div>
       <div>{film.overview}</div>
