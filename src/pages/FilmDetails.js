@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Image, Button, Grid, Card } from "@nextui-org/react";
+import { Image, Button, Grid, Card, Spacer } from "@nextui-org/react";
 
 function FilmDetails(id) {
   const [film, setFilm] = React.useState([]);
@@ -58,15 +58,15 @@ function FilmDetails(id) {
         </li>
       </ul>
 
-      <Grid.Container>
-        <div>
+      <Grid.Container css={{ display: "flex" }}>
+        <Grid>
           <Image
             css={{ width: "100%" }}
             height={384}
             src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
             alt="Film Poster"
           />
-        </div>
+        </Grid>
         <Grid css={{ marginLeft: "$3" }}>
           <iframe
             width="250%"
@@ -75,20 +75,52 @@ function FilmDetails(id) {
             title="Film Trailer"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           />
-          <Grid>
-            <Button>Videos</Button>
-          </Grid>
-          <Grid>
-            <Button>Photos</Button>
-          </Grid>
         </Grid>
+        <div>
+          <Grid>
+            <Button
+              css={{
+                width: 145,
+                height: 190,
+                color: "white",
+                background: "black",
+                borderRadius: "3%",
+                marginBottom: "1px",
+                marginLeft: "240%",
+              }}
+            >
+              Videos
+            </Button>
+          </Grid>
+          <Grid>
+            <Button
+              css={{
+                width: 145,
+                height: 190,
+                color: "white",
+                background: "black",
+                borderRadius: "3%",
+                marginTop: "1px",
+                marginLeft: "240%",
+              }}
+            >
+              Photos
+            </Button>
+          </Grid>
+        </div>
       </Grid.Container>
+      <Spacer />
 
-      <div>
+      <div style={{ display: "flex" }}>
         {film.genres?.map((genre) => {
-          return <Button key={genre.id}>{genre.name}</Button>;
+          return (
+            <Button css={{ marginLeft: "$2" }} key={genre.id}>
+              {genre.name}
+            </Button>
+          );
         })}
       </div>
+      <Spacer />
       <div>{film.overview}</div>
 
       <div>
