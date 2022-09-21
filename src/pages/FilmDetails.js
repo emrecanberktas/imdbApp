@@ -121,9 +121,10 @@ function FilmDetails(id) {
         })}
       </div>
       <Spacer />
-      <div>{film.overview}</div>
+      <Card css={{}}>{film.overview}</Card>
 
-      <div>
+      <div style={{ display: "flex" }}>
+        asdasd
         {film.production_companies?.map((company) => {
           return <div key={company.id}>{company.name}</div>;
         })}

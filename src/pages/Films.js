@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Card, Text, Button } from "@nextui-org/react";
+import { Grid, Card, Text, Button, Spacer } from "@nextui-org/react";
 import { Link, Outlet } from "react-router-dom";
 
 function Films() {
@@ -50,17 +50,29 @@ function Films() {
           );
         })}
       </Grid.Container>
-      <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         {page === 1 ? (
           <Button onClick={() => setPage(page + 1)}>Next</Button>
         ) : (
           <>
             <Button onClick={() => setPage(page - 1)}>Previous</Button>
-            <Button onClick={() => setPage(page + 1)}>Next</Button>
+            <Button
+              css={{ marginLeft: "$11" }}
+              onClick={() => setPage(page + 1)}
+            >
+              Next
+            </Button>
           </>
         )}
-      </>
+      </div>
       <Outlet />
+      <Spacer />
     </div>
   );
 }
