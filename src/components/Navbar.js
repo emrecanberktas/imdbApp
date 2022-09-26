@@ -1,6 +1,7 @@
 import React from "react";
 import { Input, Grid, Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import DarkMode from "./DarkMode";
 
 function Navbar() {
   return (
@@ -56,7 +57,7 @@ function Navbar() {
       </Grid>
 
       <Grid>
-        <Button size="sm">Dark Mode</Button>
+        <DarkMode />
       </Grid>
     </Grid.Container>
   );
