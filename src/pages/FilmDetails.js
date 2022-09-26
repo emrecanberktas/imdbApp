@@ -18,6 +18,9 @@ function FilmDetails(id) {
       )
       .then((res) => {
         setFilm(res.data);
+        setFilmHours(Math.floor(film.runtime / 60));
+        setFilmMinutes(film.runtime % 60);
+
         console.log({ film });
       })
       .catch((err) => {
@@ -25,6 +28,7 @@ function FilmDetails(id) {
       });
   };
 
+  // Get Youtube Trailer Key
   const filmTrailer = () => {
     axios
       .get(
@@ -32,8 +36,6 @@ function FilmDetails(id) {
       )
       .then((res) => {
         setfilmYoutubeTrailerKey(res.data.results[0].key);
-        setFilmHours(Math.floor(film.runtime / 60));
-        setFilmMinutes(film.runtime % 60);
         console.log(res.data.results[0].key);
       })
       .catch((err) => {
@@ -52,10 +54,10 @@ function FilmDetails(id) {
     <div>
       <h1>{film.title}</h1>
       <ul>
-        <li>{film.release_date}</li>
-        <li>
+        <h5>{film.release_date}</h5>
+        <h5>
           {filmHours}h{filmMinutes}m
-        </li>
+        </h5>
       </ul>
 
       <Grid.Container css={{ display: "flex" }}>
@@ -83,10 +85,9 @@ function FilmDetails(id) {
                 width: 145,
                 height: 190,
                 color: "white",
-                background: "black",
                 borderRadius: "3%",
                 marginBottom: "1px",
-                marginLeft: "240%",
+                marginLeft: "239%",
               }}
             >
               Videos
@@ -98,10 +99,10 @@ function FilmDetails(id) {
                 width: 145,
                 height: 190,
                 color: "white",
-                background: "black",
+                background: "#b3d5fc",
                 borderRadius: "3%",
                 marginTop: "1px",
-                marginLeft: "240%",
+                marginLeft: "239%",
               }}
             >
               Photos
@@ -121,14 +122,18 @@ function FilmDetails(id) {
         })}
       </div>
       <Spacer />
-      <Card css={{}}>{film.overview}</Card>
+      <Card css={{ width: "50%", display: "flex" }}>
+        <h4>Overview</h4>
+        {film.overview}
+      </Card>
+      <br />
 
-      <div style={{ display: "flex" }}>
-        asdasd
+      <Card css={{ width: "50%" }}>
+        <h5>Production Companies </h5>
         {film.production_companies?.map((company) => {
-          return <div key={company.id}>{company.name}</div>;
+          return <div key={company.id}>{company.name} </div>;
         })}
-      </div>
+      </Card>
     </div>
   );
 }
