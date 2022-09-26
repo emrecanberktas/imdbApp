@@ -7,6 +7,7 @@ import FilmCard from "./components/FilmCard";
 import Home from "./pages/Home";
 import FilmDetails from "./pages/FilmDetails";
 import SeriesDetails from "./pages/SeriesDetails";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </Route>
         </Routes>
         <FilmCard />
+        <Footer />
       </div>
     </Container>
   );
