@@ -24,6 +24,7 @@ function Films() {
   };
   useEffect(() => {
     getPopularFilms();
+    window.scrollTo(0, 0);
   }, [page]);
   return (
     <div>
