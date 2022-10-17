@@ -52,13 +52,15 @@ function FilmDetails(id) {
 
   return (
     <div>
-      <h1>{film.title}</h1>
-      <ul>
-        <h5>{film.release_date}</h5>
-        <h5>
-          {filmHours}h{filmMinutes}m
-        </h5>
-      </ul>
+      <h1 style={{ fontWeight: "700" }}>{film.title}</h1>
+      <div style={{ display: "flex", displayDirection: "row" }}>
+        <ul>
+          <h5>{film.release_date}</h5>
+          <h5>
+            {filmHours}h{filmMinutes}m
+          </h5>
+        </ul>
+      </div>
 
       <Grid.Container css={{ display: "flex" }}>
         <Grid>
@@ -115,25 +117,25 @@ function FilmDetails(id) {
       <div style={{ display: "flex" }}>
         {film.genres?.map((genre) => {
           return (
-            <Button css={{ marginLeft: "$2" }} key={genre.id}>
+            <ul display={{ border: "solid black" }} key={genre.id}>
               {genre.name}
-            </Button>
+            </ul>
           );
         })}
       </div>
       <Spacer />
-      <Card css={{ width: "50%", display: "flex" }}>
+      <div css={{ width: "50%", display: "flex" }}>
         <h4>Overview</h4>
         {film.overview}
-      </Card>
+      </div>
       <br />
 
-      <Card css={{ width: "50%" }}>
+      <div css={{ width: "50%" }}>
         <h5>Production Companies </h5>
         {film.production_companies?.map((company) => {
           return <div key={company.id}>{company.name} </div>;
         })}
-      </Card>
+      </div>
     </div>
   );
 }

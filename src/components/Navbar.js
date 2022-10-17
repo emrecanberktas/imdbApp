@@ -3,7 +3,7 @@ import { Input, Grid, Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
-function Navbar() {
+function Navbar({ theme, setTheme }) {
   return (
     <Grid.Container
       gap={2}
@@ -57,7 +57,7 @@ function Navbar() {
       </Grid>
 
       <Grid>
-        <DarkMode />
+        <DarkMode theme={theme} setTheme={setTheme} />
       </Grid>
     </Grid.Container>
   );
