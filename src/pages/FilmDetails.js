@@ -18,8 +18,8 @@ function FilmDetails(id) {
       )
       .then((res) => {
         setFilm(res.data);
-        setFilmHours(Math.floor(film.runtime / 60));
-        setFilmMinutes(film.runtime % 60);
+        // setFilmHours(Math.floor(film.runtime / 60));
+        // setFilmMinutes(film.runtime % 60);
 
         console.log({ film });
       })
@@ -56,9 +56,9 @@ function FilmDetails(id) {
       <div style={{ display: "flex", displayDirection: "row" }}>
         <ul>
           <h5>{film.release_date}</h5>
-          <h5>
+          {/* <h5>
             {filmHours}h{filmMinutes}m
-          </h5>
+          </h5> */}
         </ul>
       </div>
 
@@ -88,8 +88,9 @@ function FilmDetails(id) {
                 height: 190,
                 color: "white",
                 borderRadius: "3%",
-                marginBottom: "1px",
-                marginLeft: "239%",
+                marginBottom: "5px",
+                marginLeft: "240%",
+                background: "#1a1a1a",
               }}
             >
               Videos
@@ -101,10 +102,10 @@ function FilmDetails(id) {
                 width: 145,
                 height: 190,
                 color: "white",
-                background: "#b3d5fc",
+                background: "#1a1a1a",
                 borderRadius: "3%",
                 marginTop: "1px",
-                marginLeft: "239%",
+                marginLeft: "240%",
               }}
             >
               Photos
@@ -125,13 +126,13 @@ function FilmDetails(id) {
       </div>
       <Spacer />
       <div css={{ width: "50%", display: "flex" }}>
-        <h4>Overview</h4>
+        <h4 style={{ letterSpacing: "0.5px" }}>Overview</h4>
         {film.overview}
       </div>
       <br />
 
       <div css={{ width: "50%" }}>
-        <h5>Production Companies </h5>
+        <h4 style={{ letterSpacing: "0.5px" }}>Production Companies </h4>
         {film.production_companies?.map((company) => {
           return <div key={company.id}>{company.name} </div>;
         })}
