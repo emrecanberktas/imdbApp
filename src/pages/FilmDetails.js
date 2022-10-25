@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { Image, Button, Grid, Card, Spacer } from "@nextui-org/react";
+import { useParams, Link, Outlet } from "react-router-dom";
+import { Image, Button, Grid, Card, Spacer, Text } from "@nextui-org/react";
 
 function FilmDetails(id) {
-  const [film, setFilm] = React.useState([]);
-  const [filmHours, setFilmHours] = React.useState([]);
-  const [filmMinutes, setFilmMinutes] = React.useState([]);
-  const [filmYoutubeTrailerKey, setfilmYoutubeTrailerKey] = React.useState([]);
+  const [film, setFilm] = useState([]);
+  const [filmHours, setFilmHours] = useState([]);
+  const [filmMinutes, setFilmMinutes] = useState([]);
+  const [filmYoutubeTrailerKey, setfilmYoutubeTrailerKey] = useState([]);
 
   let { filmId } = useParams();
 
@@ -82,34 +82,38 @@ function FilmDetails(id) {
         </Grid>
         <div>
           <Grid>
-            <Button
-              css={{
-                width: 145,
-                height: 190,
-                color: "white",
-                borderRadius: "3%",
-                marginBottom: "5px",
-                marginLeft: "240%",
-                background: "#1a1a1a",
-              }}
-            >
-              Videos
-            </Button>
+            <Link to={`/films/${film.id}/videos`}>
+              <Button
+                css={{
+                  width: 145,
+                  height: 190,
+                  color: "white",
+                  borderRadius: "3%",
+                  marginBottom: "5px",
+                  marginLeft: "240%",
+                  background: "#1a1a1a",
+                }}
+              >
+                Videos
+              </Button>
+            </Link>
           </Grid>
           <Grid>
-            <Button
-              css={{
-                width: 145,
-                height: 190,
-                color: "white",
-                background: "#1a1a1a",
-                borderRadius: "3%",
-                marginTop: "1px",
-                marginLeft: "240%",
-              }}
-            >
-              Photos
-            </Button>
+            <Link to={`/films/${film.id}/images`}>
+              <Button
+                css={{
+                  width: 145,
+                  height: 190,
+                  color: "white",
+                  background: "#1a1a1a",
+                  borderRadius: "3%",
+                  marginTop: "1px",
+                  marginLeft: "240%",
+                }}
+              >
+                Images
+              </Button>
+            </Link>
           </Grid>
         </div>
       </Grid.Container>
@@ -126,17 +130,18 @@ function FilmDetails(id) {
       </div>
       <Spacer />
       <div css={{ width: "50%", display: "flex" }}>
-        <h4 style={{ letterSpacing: "0.5px" }}>Overview</h4>
+        <Text h3>Overview</Text>
         {film.overview}
       </div>
       <br />
 
       <div css={{ width: "50%" }}>
-        <h4 style={{ letterSpacing: "0.5px" }}>Production Companies </h4>
+        <Text h3>Production Companies </Text>
         {film.production_companies?.map((company) => {
           return <div key={company.id}>{company.name} </div>;
         })}
       </div>
+      <Outlet />
     </div>
   );
 }

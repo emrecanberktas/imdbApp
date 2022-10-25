@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, createTheme, Switch, useTheme } from "@nextui-org/react";
+import { Switch } from "@nextui-org/react";
 import { SunIcon } from "./SunIcon";
 import { MoonIcon } from "./MoonIcon";
 

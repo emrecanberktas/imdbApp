@@ -1,10 +1,4 @@
-import {
-  Container,
-  Row,
-  Col,
-  NextUIProvider,
-  createTheme,
-} from "@nextui-org/react";
+import { Container, NextUIProvider, createTheme } from "@nextui-org/react";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Films from "./pages/Films";
@@ -14,6 +8,7 @@ import Home from "./pages/Home";
 import FilmDetails from "./pages/FilmDetails";
 import SeriesDetails from "./pages/SeriesDetails";
 import Footer from "./components/Footer";
+import FilmImages from "./pages/FilmImages";
 import { useState } from "react";
 
 function App() {
@@ -36,9 +31,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="films" element={<Films />} />
             <Route path="films/:filmId" element={<FilmDetails />} />
-            <Route path="series" element={<Series />}>
-              <Route path="seriesId" element={<SeriesDetails />} />
-            </Route>
+            <Route path="films/:filmId/images" element={<FilmImages />} />
+            <Route path="films/:filmId/videos" />
+            <Route path="series" element={<Series />} />
+            <Route path="seriesId" element={<SeriesDetails />} />
           </Routes>
           <FilmCard />
           <Footer />
