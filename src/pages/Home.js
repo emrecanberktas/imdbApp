@@ -1,7 +1,19 @@
-import React from "react";
+import { Text } from "@nextui-org/react";
+import TrendingActors from "../components/TrendingActors";
+import TrendingMovies from "../components/TrendingMovies";
+import TrendingSeries from "../components/TrendingSeries";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Text h3>Trending Movies</Text>
+      <TrendingMovies />
+      <Text h3>Trending Series</Text>
+      <TrendingSeries />
+      <Text h3>Trending Actors</Text>
+      <TrendingActors />
+    </div>
+  );
 }
 
 export default Home;

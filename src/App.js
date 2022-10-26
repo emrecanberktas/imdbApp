@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Films from "./pages/Films";
 import Series from "./pages/Series";
-import FilmCard from "./components/FilmCard";
 import Home from "./pages/Home";
 import FilmDetails from "./pages/FilmDetails";
 import SeriesDetails from "./pages/SeriesDetails";
@@ -23,7 +22,7 @@ function App() {
   });
 
   return (
-    <NextUIProvider theme={theme == "light" ? lightTheme : darkTheme}>
+    <NextUIProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <Container lg>
         <div>
           <Navbar theme={theme} setTheme={setTheme} />
@@ -36,7 +35,6 @@ function App() {
             <Route path="series" element={<Series />} />
             <Route path="seriesId" element={<SeriesDetails />} />
           </Routes>
-          <FilmCard />
           <Footer />
         </div>
       </Container>
