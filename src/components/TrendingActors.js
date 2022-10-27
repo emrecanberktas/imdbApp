@@ -14,7 +14,6 @@ function TrendingActors() {
       )
       .then((res) => {
         setTrendingActors(res.data.results);
-        console.log({ trendingActors });
       })
       .catch((err) => {
         console.log(err);

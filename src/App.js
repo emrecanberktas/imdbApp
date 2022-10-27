@@ -28,6 +28,7 @@ function App() {
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="home/:filmId" element={<FilmDetails />} />
             <Route path="films" element={<Films />} />
             <Route path="films/:filmId" element={<FilmDetails />} />
             <Route path="films/:filmId/images" element={<FilmImages />} />

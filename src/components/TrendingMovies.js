@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Grid, Row, Text } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 import "swiper/css";
 
 function TrendingMovies() {
@@ -14,7 +15,6 @@ function TrendingMovies() {
       )
       .then((res) => {
         setTrendingMovies(res.data.results);
-        console.log({ trendingMovies });
       })
       .catch((err) => {
         console.log(err);
@@ -36,31 +36,33 @@ function TrendingMovies() {
             return (
               <Grid xs={5} sm={6} key={movie.id}>
                 <SwiperSlide>
-                  <Card>
-                    <Card.Body css={{ p: 0 }}>
-                      <Card.Image
-                        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                        alt={movie.title}
-                        objectFit="cover"
-                        width="100%"
-                        height={350}
-                      />
-                    </Card.Body>
-                    <Card.Footer css={{ justifyItems: "flex-start" }}>
-                      <Row justify="space-between" align="center">
-                        <Text b>{movie.title}</Text>
-                        <Text
-                          css={{
-                            color: "$accents7",
-                            fontweight: "$semibold",
-                            fontsize: "$sm",
-                          }}
-                        >
-                          {movie.vote_average}
-                        </Text>
-                      </Row>
-                    </Card.Footer>
-                  </Card>
+                  <Link to={`/home/${movie.id}`}>
+                    <Card isHoverable>
+                      <Card.Body css={{ p: 0 }}>
+                        <Card.Image
+                          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                          alt={movie.title}
+                          objectFit="cover"
+                          width="100%"
+                          height={350}
+                        />
+                      </Card.Body>
+                      <Card.Footer css={{ justifyItems: "flex-start" }}>
+                        <Row justify="space-between" align="center">
+                          <Text b>{movie.title}</Text>
+                          <Text
+                            css={{
+                              color: "$accents7",
+                              fontweight: "$semibold",
+                              fontsize: "$sm",
+                            }}
+                          >
+                            {movie.vote_average.toFixed(1)}
+                          </Text>
+                        </Row>
+                      </Card.Footer>
+                    </Card>
+                  </Link>
                 </SwiperSlide>
               </Grid>
             );

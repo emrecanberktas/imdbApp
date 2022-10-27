@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 
 function Films() {
   const [page, setPage] = useState(1);
-  const [films, setFilms] = useState([]);
+  const [films, setFilms] = useState(null);
   const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
   const getPopularFilms = () => {
@@ -26,6 +26,11 @@ function Films() {
     getPopularFilms();
     window.scrollTo(0, 0);
   }, [page]);
+
+  if (!films) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <Grid.Container gap={3} justify="center" wrap="wrap" direction="row">
@@ -33,7 +38,11 @@ function Films() {
           return (
             <Grid xs={3}>
               <Link to={`/films/${film.id}`}>
-                <Card key={film.id} isHoverable css={{ width: "100%" }}>
+                <Card
+                  key={film.id}
+                  isHoverable
+                  css={{ width: "100%", width: "300px" }}
+                >
                   <Card.Image
                     src={imageBaseUrl + film.poster_path}
                     width="100%"

@@ -10,6 +10,7 @@ function Home() {
       <TrendingMovies />
       <Text h3>Trending Series</Text>
       <TrendingSeries />
+      <br />
       <Text h3>Trending Actors</Text>
       <TrendingActors />
     </div>

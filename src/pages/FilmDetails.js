@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link, Outlet } from "react-router-dom";
-import { Image, Button, Grid, Card, Spacer, Text } from "@nextui-org/react";
+import { Image, Button, Grid, Spacer, Text } from "@nextui-org/react";
 
 function FilmDetails(id) {
   const [film, setFilm] = useState([]);

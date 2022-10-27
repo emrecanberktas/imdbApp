@@ -14,7 +14,6 @@ function TrendingSeries() {
       )
       .then((res) => {
         setTrendingSeries(res.data.results);
-        console.log({ trendingSeries });
       })
       .catch((err) => {
         console.log(err);
@@ -56,7 +55,7 @@ function TrendingSeries() {
                             fontsize: "$sm",
                           }}
                         >
-                          {serie.vote_average}
+                          {serie.vote_average.toFixed(1)}
                         </Text>
                       </Row>
                     </Card.Footer>
