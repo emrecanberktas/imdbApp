@@ -9,8 +9,8 @@ function DarkMode({ theme, setTheme }) {
       <Switch
         checked={true}
         size="lg"
-        iconOn={<SunIcon filled />}
-        iconOff={<MoonIcon filled />}
+        iconOff={<SunIcon filled />}
+        iconOn={<MoonIcon filled />}
         onChange={(e) => {
           setTheme(e.target.checked ? "light" : "dark");
         }}

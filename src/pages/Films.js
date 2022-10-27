@@ -38,11 +38,7 @@ function Films() {
           return (
             <Grid xs={3}>
               <Link to={`/films/${film.id}`}>
-                <Card
-                  key={film.id}
-                  isHoverable
-                  css={{ width: "100%", width: "300px" }}
-                >
+                <Card key={film.id} isHoverable css={{ width: "300px" }}>
                   <Card.Image
                     src={imageBaseUrl + film.poster_path}
                     width="100%"

@@ -11,7 +11,9 @@ import FilmImages from "./pages/FilmImages";
 import { useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  );
 
   const lightTheme = createTheme({
     type: "light",
