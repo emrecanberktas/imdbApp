@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Card, Text, Button, Spacer } from "@nextui-org/react";
+import { Grid, Text, Button, Spacer } from "@nextui-org/react";
 import { Link, Outlet } from "react-router-dom";
+import CardComponent from "../components/CardComponent";
 
 function Films() {
+  const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
+
   const [page, setPage] = useState(1);
   const [films, setFilms] = useState(null);
-  const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
   const getPopularFilms = () => {
     axios
@@ -38,19 +40,11 @@ function Films() {
           return (
             <Grid xs={3}>
               <Link to={`/films/${film.id}`}>
-                <Card key={film.id} isHoverable css={{ width: "300px" }}>
-                  <Card.Image
-                    src={imageBaseUrl + film.poster_path}
-                    width="100%"
-                    height="450px"
-                    objectFit="cover"
-                    style={{ display: "block" }}
-                    alt="Film Poster"
-                  />
-                  <Text h4 css={{ padding: "$5 $8", lineHeight: "$sm" }}>
-                    {film.title}
-                  </Text>
-                </Card>
+                <CardComponent
+                  key={film.id}
+                  title={film.title}
+                  src={imageBaseUrl + film.poster_path}
+                />
               </Link>
             </Grid>
           );
