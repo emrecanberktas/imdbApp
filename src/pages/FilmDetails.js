@@ -5,8 +5,8 @@ import { Image, Button, Grid, Spacer, Text } from "@nextui-org/react";
 
 function FilmDetails(id) {
   const [film, setFilm] = useState([]);
-  const [filmHours, setFilmHours] = useState([]);
-  const [filmMinutes, setFilmMinutes] = useState([]);
+  const [filmHours, setFilmHours] = useState(null);
+  const [filmMinutes, setFilmMinutes] = useState(null);
   const [filmYoutubeTrailerKey, setfilmYoutubeTrailerKey] = useState([]);
 
   let { filmId } = useParams();
@@ -18,10 +18,13 @@ function FilmDetails(id) {
       )
       .then((res) => {
         setFilm(res.data);
-        // setFilmHours(Math.floor(film.runtime / 60));
-        // setFilmMinutes(film.runtime % 60);
-
-        console.log({ film });
+        console.log(res.data);
+      })
+      .then(() => {
+        setFilmHours(Math.floor(film.runtime / 60));
+        setFilmMinutes(film.runtime % 60);
+        console.log({ filmHours });
+        console.log({ filmMinutes });
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +51,9 @@ function FilmDetails(id) {
     filmTrailer();
   }, []);
 
-  console.log({ film });
+  if (!filmHours || !filmMinutes) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -56,59 +61,52 @@ function FilmDetails(id) {
       <div style={{ display: "flex", displayDirection: "row" }}>
         <ul>
           <h5>{film.release_date}</h5>
-          {/* <h5>
+          <h5>
             {filmHours}h{filmMinutes}m
-          </h5> */}
+          </h5>
         </ul>
       </div>
 
-      <Grid.Container css={{ display: "flex" }}>
-        <Grid>
+      <Grid.Container gap={1}>
+        <Grid xs={3}>
           <Image
             css={{ width: "100%" }}
-            height={384}
             src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
             alt="Film Poster"
           />
         </Grid>
-        <Grid css={{ marginLeft: "$3" }}>
+        <Grid xs={7}>
           <iframe
             width="250%"
-            height="100%"
             src={`https://www.youtube.com/embed/${filmYoutubeTrailerKey}`}
             title="Film Trailer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           />
         </Grid>
         <div>
-          <Grid>
+          <Grid xs={3}>
             <Link to={`/films/${film.id}/videos`}>
               <Button
                 css={{
                   width: 145,
-                  height: 190,
+                  height: 220,
                   color: "white",
                   borderRadius: "3%",
                   marginBottom: "5px",
-                  marginLeft: "240%",
                   background: "#1a1a1a",
                 }}
               >
                 Videos
               </Button>
             </Link>
-          </Grid>
-          <Grid>
             <Link to={`/films/${film.id}/images`}>
               <Button
                 css={{
                   width: 145,
-                  height: 190,
+                  height: 220,
                   color: "white",
                   background: "#1a1a1a",
                   borderRadius: "3%",
                   marginTop: "1px",
-                  marginLeft: "240%",
                 }}
               >
                 Images
