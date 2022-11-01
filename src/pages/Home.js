@@ -8,6 +8,7 @@ function Home() {
     <div>
       <Text h3>Trending Movies</Text>
       <TrendingMovies />
+      <br />
       <Text h3>Trending Series</Text>
       <TrendingSeries />
       <br />
