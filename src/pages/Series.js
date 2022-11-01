@@ -16,7 +16,6 @@ function Series() {
 		https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
       )
       .then((res) => {
-        console.log(res.data.results);
         setSeries(res.data.results);
       })
       .catch((err) => {

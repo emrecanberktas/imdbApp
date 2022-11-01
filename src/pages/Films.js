@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Text, Button, Spacer } from "@nextui-org/react";
+import { Grid, Button, Spacer } from "@nextui-org/react";
 import { Link, Outlet } from "react-router-dom";
 import CardComponent from "../components/CardComponent";
 
 function Films() {
-  const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
-
   const [page, setPage] = useState(1);
   const [films, setFilms] = useState(null);
 
@@ -17,7 +15,6 @@ function Films() {
 		https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
       )
       .then((res) => {
-        console.log(res.data.results);
         setFilms(res.data.results);
       })
       .catch((err) => {
@@ -32,6 +29,8 @@ function Films() {
   if (!films) {
     return <div>Loading...</div>;
   }
+
+  const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
   return (
     <div>

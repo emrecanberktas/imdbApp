@@ -20,12 +20,6 @@ function FilmDetails(id) {
         setFilm(res.data);
         console.log(res.data);
       })
-      .then(() => {
-        setFilmHours(Math.floor(film.runtime / 60));
-        setFilmMinutes(film.runtime % 60);
-        console.log({ filmHours });
-        console.log({ filmMinutes });
-      })
       .catch((err) => {
         console.log(err);
       });
@@ -39,7 +33,6 @@ function FilmDetails(id) {
       )
       .then((res) => {
         setfilmYoutubeTrailerKey(res.data.results[0].key);
-        console.log(res.data.results[0].key);
       })
       .catch((err) => {
         console.log(err);
@@ -51,19 +44,12 @@ function FilmDetails(id) {
     filmTrailer();
   }, []);
 
-  if (!filmHours || !filmMinutes) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
       <h1 style={{ fontWeight: "700" }}>{film.title}</h1>
       <div style={{ display: "flex", displayDirection: "row" }}>
         <ul>
           <h5>{film.release_date}</h5>
-          <h5>
-            {filmHours}h{filmMinutes}m
-          </h5>
         </ul>
       </div>
 
