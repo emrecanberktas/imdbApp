@@ -3,7 +3,7 @@ import { Card, Row, Text } from "@nextui-org/react";
 
 function SwiperCard(props) {
   return (
-    <Card isHoverable>
+    <Card isHoverable key={props.id}>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
           src={props.src}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, Grid, Row, Text } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import SwiperCard from "./SwiperCard";
 
 function TrendingSeries() {
   const [trendingSeries, setTrendingSeries] = useState(null);
@@ -27,6 +28,8 @@ function TrendingSeries() {
     return <div>Loading...</div>;
   }
 
+  let imageBaseUrl = "https://image.tmdb.org/t/p/w300";
+
   return (
     <div>
       <Swiper spaceBetween={20} slidesPerView={5}>
@@ -35,31 +38,12 @@ function TrendingSeries() {
             return (
               <Grid xs={5} sm={6} key={serie.id}>
                 <SwiperSlide>
-                  <Card>
-                    <Card.Body css={{ p: 0 }}>
-                      <Card.Image
-                        src={`https://image.tmdb.org/t/p/w300${serie.poster_path}`}
-                        alt={serie.title}
-                        objectFit="cover"
-                        width="100%"
-                        height={350}
-                      />
-                    </Card.Body>
-                    <Card.Footer css={{ justifyItems: "flex-start" }}>
-                      <Row justify="space-between" align="center">
-                        <Text b>{serie.name}</Text>
-                        <Text
-                          css={{
-                            color: "$accents7",
-                            fontweight: "$semibold",
-                            fontsize: "$sm",
-                          }}
-                        >
-                          {serie.vote_average.toFixed(1)}
-                        </Text>
-                      </Row>
-                    </Card.Footer>
-                  </Card>
+                  <SwiperCard
+                    src={imageBaseUrl + serie.poster_path}
+                    title={serie.name}
+                    vote_average={serie.vote_average}
+                    id={serie.id}
+                  />
                 </SwiperSlide>
               </Grid>
             );
