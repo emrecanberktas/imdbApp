@@ -7,12 +7,13 @@ function DarkMode({ theme, setTheme }) {
   return (
     <div>
       <Switch
-        checked={true}
+        aria-label="Dark Mode"
         size="lg"
         iconOff={<SunIcon filled />}
         iconOn={<MoonIcon filled />}
         onChange={(e) => {
           setTheme(e.target.checked ? "light" : "dark");
+          localStorage.setItem("theme", e.target.checked ? "light" : "dark");
         }}
       />
     </div>

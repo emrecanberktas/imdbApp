@@ -8,12 +8,10 @@ import FilmDetails from "./pages/FilmDetails";
 import SeriesDetails from "./pages/SeriesDetails";
 import Footer from "./components/Footer";
 import FilmImages from "./pages/FilmImages";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   const lightTheme = createTheme({
     type: "light",
@@ -23,8 +21,14 @@ function App() {
     type: "dark",
   });
 
+  useEffect(() => {
+    setTheme(localStorage.getItem("theme"));
+  }, [theme]);
+
   return (
-    <NextUIProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <NextUIProvider
+      theme={localStorage.getItem("theme") === "light" ? lightTheme : darkTheme}
+    >
       <Container lg>
         <div>
           <Navbar theme={theme} setTheme={setTheme} />
