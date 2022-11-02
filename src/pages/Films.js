@@ -37,7 +37,7 @@ function Films() {
       <Grid.Container gap={3} justify="center" wrap="wrap" direction="row">
         {films.map((film) => {
           return (
-            <Grid xs={3}>
+            <Grid xs={3} key={film.id}>
               <Link to={`/films/${film.id}`}>
                 <CardComponent
                   key={film.id}
