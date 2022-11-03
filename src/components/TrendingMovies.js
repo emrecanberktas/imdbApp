@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Grid, Row, Text } from "@nextui-org/react";
+import { Grid } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import "swiper/css";
@@ -38,7 +38,7 @@ function TrendingMovies() {
           {trendingMovies.map((movie) => {
             return (
               <Grid xs={5} sm={6} key={movie.id}>
-                <SwiperSlide>
+                <SwiperSlide key={movie.id}>
                   <Link to={`/home/${movie.id}`}>
                     <SwiperCard
                       src={imageBaseUrl + movie.poster_path}

@@ -34,7 +34,7 @@ function TrendingActors() {
           {trendingActors.map((actor) => {
             return (
               <Grid xs={5} sm={6} key={actor.id}>
-                <SwiperSlide>
+                <SwiperSlide key={actor.id}>
                   <Card>
                     <Card.Body css={{ p: 0 }}>
                       <Card.Image
