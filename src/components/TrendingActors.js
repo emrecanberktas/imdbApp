@@ -3,6 +3,8 @@ import axios from "axios";
 import { Card, Grid, Row, Text } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 function TrendingActors() {
   const [trendingActors, setTrendingActors] = useState(null);
@@ -29,7 +31,12 @@ function TrendingActors() {
 
   return (
     <div>
-      <Swiper spaceBetween={20} slidesPerView={5}>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={5}
+        navigation={true}
+        modules={[Navigation]}
+      >
         <Grid.Container>
           {trendingActors.map((actor) => {
             return (

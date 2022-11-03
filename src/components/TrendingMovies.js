@@ -4,6 +4,8 @@ import { Grid } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 import SwiperCard from "./SwiperCard";
 
 function TrendingMovies() {
@@ -33,7 +35,12 @@ function TrendingMovies() {
 
   return (
     <div>
-      <Swiper spaceBetween={20} slidesPerView={5}>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={5}
+        navigation={true}
+        modules={[Navigation]}
+      >
         <Grid.Container>
           {trendingMovies.map((movie) => {
             return (
