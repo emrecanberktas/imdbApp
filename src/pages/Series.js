@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Card, Text, Button, Spacer } from "@nextui-org/react";
+import { Grid, Button, Spacer } from "@nextui-org/react";
 import { Link, Outlet } from "react-router-dom";
 import CardComponent from "../components/CardComponent";
 
@@ -36,7 +36,7 @@ function Series() {
       <Grid.Container gap={3} justify="center" wrap="wrap" direction="row">
         {series.map((series) => {
           return (
-            <Grid xs={3}>
+            <Grid xs={3} key={series.id}>
               <Link to={`/series/${series.id}`}>
                 <CardComponent
                   key={series.id}
