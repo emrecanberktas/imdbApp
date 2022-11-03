@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div>
+    <footer>
       <br />
       <div
         style={{
@@ -14,7 +14,7 @@ function Footer() {
         Made By Emre Can Berktas
       </div>
       <br />
-    </div>
+    </footer>
   );
 }
 
