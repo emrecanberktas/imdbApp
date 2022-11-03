@@ -40,7 +40,11 @@ function Navbar({ theme, setTheme }) {
           </Grid>
           <Grid>
             <div>
-              <Input placeholder="Search IMDB" width="550px" />
+              <Input
+                placeholder="Search IMDB"
+                width="550px"
+                aria-label="search-bar"
+              />
             </div>
           </Grid>
           <Grid justify="center" alignItems="center">

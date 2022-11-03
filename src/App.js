@@ -5,7 +5,7 @@ import Films from "./pages/Films";
 import Series from "./pages/Series";
 import Home from "./pages/Home";
 import FilmDetails from "./pages/FilmDetails";
-import SeriesDetails from "./pages/SeriesDetails";
+import SerieDetails from "./pages/SerieDetails";
 import Footer from "./components/Footer";
 import FilmImages from "./pages/FilmImages";
 import { useEffect, useState } from "react";
@@ -40,7 +40,7 @@ function App() {
             <Route path="films/:filmId/images" element={<FilmImages />} />
             <Route path="films/:filmId/videos" />
             <Route path="series" element={<Series />} />
-            <Route path="seriesId" element={<SeriesDetails />} />
+            <Route path="seriesId" element={<SerieDetails />} />
           </Routes>
           <Footer />
         </div>

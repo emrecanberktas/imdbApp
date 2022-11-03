@@ -5,8 +5,6 @@ import { Image, Button, Grid, Spacer, Text } from "@nextui-org/react";
 
 function FilmDetails(id) {
   const [film, setFilm] = useState([]);
-  const [filmHours, setFilmHours] = useState(null);
-  const [filmMinutes, setFilmMinutes] = useState(null);
   const [filmYoutubeTrailerKey, setfilmYoutubeTrailerKey] = useState([]);
 
   let { filmId } = useParams();

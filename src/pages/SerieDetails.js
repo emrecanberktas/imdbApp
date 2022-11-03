@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function SerieDetails(id) {
-  const [serie, setSerie] = React.useState([]);
+  const [serie, setSerie] = useState([]);
   return <div></div>;
 }
 
