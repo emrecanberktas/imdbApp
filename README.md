@@ -2,15 +2,16 @@
 
 [TMDB App](https://imdb-app-livid.vercel.app/) is a webpage for check popular movies and series
 
-## Used Technologies
+## Tech Stack
 
 - React
 - Next UI
 - TMDB API
+- React Router
 
 ## Installation
 
-First clone this project
+Clone the repository
 
 ```bash
 git clone https://github.com/emrecanberktas/imdbApp.git
@@ -27,5 +28,3 @@ npm i
 ```bash
 npm start
 ```
-
-And you are ready to go :)
