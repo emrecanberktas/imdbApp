@@ -6,7 +6,7 @@ import DarkMode from "./DarkMode";
 function Navbar({ theme, setTheme }) {
   return (
     <Grid.Container
-      gap={2}
+      gap={1}
       justify="space-between"
       alignItems="center"
       direction="row"
@@ -15,9 +15,12 @@ function Navbar({ theme, setTheme }) {
       <Grid>
         <div>
           <Link to="/">
-            <h3 color="black">IMDB</h3>
+            <h3>IMDB</h3>
           </Link>
         </div>
+        <Grid>
+          <DarkMode theme={theme} setTheme={setTheme} />
+        </Grid>
       </Grid>
       <Grid>
         <Grid.Container justify="space-between" alignItems="center" gap={3}>
@@ -41,6 +44,7 @@ function Navbar({ theme, setTheme }) {
           <Grid>
             <div>
               <Input
+                bordered
                 placeholder="Search IMDB"
                 width="550px"
                 aria-label="search-bar"
@@ -58,10 +62,6 @@ function Navbar({ theme, setTheme }) {
             </Link>
           </Grid>
         </Grid.Container>
-      </Grid>
-
-      <Grid>
-        <DarkMode theme={theme} setTheme={setTheme} />
       </Grid>
     </Grid.Container>
   );
