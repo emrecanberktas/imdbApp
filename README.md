@@ -1,30 +1,38 @@
 # TMDB App
 
-[TMDB App](https://imdb-app-livid.vercel.app/) is a webpage for check popular movies and series
+## Table of contents
 
-## Tech Stack
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Tech Stack](#tech-stack)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
 
-- React
-- Next UI
-- TMDB API
-- React Router
+### The challenge
 
-## Installation
+Users should be able to:
 
-Clone the repository
+- See popular Movies and TV Shows
+- Search for any Movies and TV Shows
+- See the details of any Movie or TV Show
 
-```bash
-git clone https://github.com/emrecanberktas/imdbApp.git
-```
+### Links
 
-After cloning process complete install necessary packages
+- Live Site URL: [https://imdb-app-livid.vercel.app/](https://imdb-app-livid.vercel.app/)
 
-```bash
-npm i
-```
+### Tech Stack
 
-## Usage
+- HTML5
+- CSS
+- JavaScript
+- [TMDB](https://www.themoviedb.org/)
+- [Leaflet](https://leafletjs.com/)
+- [React](https://reactjs.org/) - JS library
+- [React Router](https://reactrouter.com/) - For routing
+- [Next UI](https://nextui.org/) - UI library
 
-```bash
-npm start
-```
+### Continued development
+
+I want to continue to this project and add more features.
