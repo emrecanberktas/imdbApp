@@ -25,7 +25,7 @@ function Navbar({ theme, setTheme }) {
       <Grid>
         <Grid.Container justify="space-between" alignItems="center" gap={3}>
           <Grid>
-            <svg
+            {/* <svg
               width={25}
               height={25}
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ function Navbar({ theme, setTheme }) {
                 strokeLinejoin="round"
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
-            </svg>
+            </svg> */}
           </Grid>
           <Grid>
             <div>
